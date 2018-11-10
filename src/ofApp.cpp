@@ -6,9 +6,11 @@ void ofApp::setup()
 
 	m_device.connectEventHandler(&ofApp::onLeapFrame, this);
 
-	ofSetFrameRate(ProjectConstants::PROJ_DESIRED_FRAMERATE);
+	//ofSetFrameRate(ProjectConstants::PROJ_DESIRED_FRAMERATE);
 
 	newGame.InitGame();
+	gameTime.Update();
+
 }
 
 void ofApp::onLeapFrame(Leap::Frame frame)
@@ -54,15 +56,17 @@ void ofApp::update(){
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
+void ofApp::draw()
+{
+	//ofPushMatrix();
+	newGame.Draw();
+
 	ofPushMatrix();
 	ofTranslate(m_palmPos.x, m_palmPos.z);
 	ofRotateZ(m_palmRot.y);
 	ofScale(m_pinchStrength + 0.5f, m_pinchStrength + 0.5f, m_pinchStrength + 0.5f);
 	ofDrawTriangle(0, -20, 10, 10, -10, 10);
-
-	newGame.Draw();
-
 	ofPopMatrix();
-}
 
+	//ofPopMatrix();
+}

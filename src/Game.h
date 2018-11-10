@@ -1,7 +1,7 @@
 #pragma once
 //#include "Animation.h"
 //#include "Person.h"
-//#include "Item.h"
+#include "Item.h"
 #include "Background.h"
 //#include "Collision.h"
 #include <time.h>
@@ -18,8 +18,10 @@ public:
 
 private:
 
-	std::vector<ofImage> BGImages;
-	std::vector<ofImage> ObImages;
+	vector<ofImage> BGImages;
+	vector<ofImage> ObImages;
+
+	vector<Item> items;
 	   	  
 	float gameSpeed;
 

@@ -12,6 +12,7 @@ public:
 	void changeX(float c) { xPos += c; }
 	void changeY(float c) { yPos += c; }
 	void setOrder(int o) { m_order = 0; }
+	float getX() { return xPos; }
 	float getY() { return yPos; }
 	int getOrder() { return m_order; }
 	ofImage getImage() { return bImage; }
