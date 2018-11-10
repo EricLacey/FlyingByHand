@@ -361,3 +361,7 @@ obj/
 bin/
 build/
 !data/
+*.vcxproj
+*.filters
+FlyingByHand.vcxproj.filters
+FlyingByHand.vcxproj
