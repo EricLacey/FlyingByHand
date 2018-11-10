@@ -12,7 +12,7 @@ private:
 
 	float currentTime;
 
-	vector<ofImage> mImages;
+	vector<ofImage> m_images;
 
 public:
 	Animation() { currentAnimationState = 0; }
@@ -23,8 +23,7 @@ public:
 
 	void render(int x, int y, bool flipped);
 
-	//change to be called from animation manager class so the correct amount of animations will be used for each specific entity
-	//void changeAnimation(int animState);//takes in integer to put through switch statement. then decides which animation state to switch to
+	//void changeAnimation(int animState);
 
 	int getCurrentAnimation() { return currentAnimationState; }
 

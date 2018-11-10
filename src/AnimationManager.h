@@ -13,8 +13,8 @@ private:
 	//currentanimation
 	Animation* m_currentAnimation;
 
-	Animation run;
-	Animation walk;
+	Animation peopleStand;
+	Animation peopleSkate;
 	Animation idle;
 	Animation jump;
 	Animation fall;

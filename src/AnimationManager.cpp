@@ -8,6 +8,11 @@ void AnimationManager::render(float x, float y, bool f)
 void AnimationManager::Init(vector<ofImage> textures)
 {
 
+
+	///CREATE a push of animation classes based on how many animations the object needs
+
+
+
 	//	for (int i = 0; i < 8; i++)
 	//	{
 	//		m_textures.Add(*textures.Get(i));
@@ -103,7 +108,7 @@ void AnimationManager::Update(float DeltaTime)
 
 void AnimationManager::changeAnimation(int animstate)
 {
-
+	///switch vector of animations
 	/*if (!(animationState == animstate))
 	{
 		animationState = animstate;

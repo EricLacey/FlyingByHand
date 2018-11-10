@@ -230,6 +230,7 @@
     <ClInclude Include="..\..\..\addons\ofxLeapC\libs\include\LeapC.h" />
     <ClInclude Include="..\..\..\addons\ofxLeapC\libs\include\LeapImplementationC++.h" />
     <ClInclude Include="..\..\..\addons\ofxLeapC\libs\include\LeapMath.h" />
+    <ClInclude Include="src\Person.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

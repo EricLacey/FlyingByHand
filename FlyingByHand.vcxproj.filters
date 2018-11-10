@@ -188,6 +188,9 @@
     <ClInclude Include="src\AnimationManager.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Person.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

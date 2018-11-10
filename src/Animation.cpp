@@ -7,7 +7,7 @@ void Animation::Init(int fps, vector<ofImage> images)
 	frameRate = fps;
 	for (int i = 0; i < images.size(); ++i)
 	{
-		mImages.push_back(images[i]);
+		m_images.push_back(images[i]);
 	}
 }
 
@@ -22,9 +22,9 @@ void Animation::updateAnimation(float deltaTime)
 		++currentFrame;
 	}
 
-	while (currentFrame >= mImages.size())
+	while (currentFrame >= m_images.size())
 	{
-		currentFrame -= mImages.size();
+		currentFrame -= m_images.size();
 	}
 
 }
@@ -32,7 +32,7 @@ void Animation::updateAnimation(float deltaTime)
 void Animation::render(int x, int y, bool flipped)
 {
 
-	mImages[currentFrame].draw(0, 0);
+	m_images[currentFrame].draw(0, 0);
 	
 }
 
