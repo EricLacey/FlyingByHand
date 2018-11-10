@@ -1,5 +1,5 @@
 #pragma once
-#include "ofApp.h"
+#include "ofMain.h"
 
 class Background
 {
@@ -25,6 +25,6 @@ private:
 	float xPos;
 	float yPos;
 
-	vector<ofVec2f> keyPositions;
+	std::vector<ofVec2f> keyPositions;
 
 };

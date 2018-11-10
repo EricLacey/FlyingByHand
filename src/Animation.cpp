@@ -2,7 +2,7 @@
 #include "ofApp.h"
 #include "Animation.h"
 
-void Animation::Init(int fps, vector<ofImage> images)
+void Animation::Init(int fps, std::vector<ofImage> images)
 {
 	frameRate = fps;
 	for (int i = 0; i < images.size(); ++i)

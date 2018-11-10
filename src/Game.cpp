@@ -55,14 +55,14 @@ void Game::LoadBGImages()
 	ofImage Canal3B;
 	ofImage Canal3C;
 	ofImage Canal5A;
-	Canal1A.loadImage("C1A.png");
-	Canal1B.loadImage("C1B.png");
-	Canal2A.loadImage("C2A.png");
-	Canal2B.loadImage("C2B.png");
-	Canal3A.loadImage("C3A.png");
-	Canal3B.loadImage("C3B.png");
-	Canal3C.loadImage("C3C.png");
-	Canal5A.loadImage("C5A.png");
+	Canal1A.load("C1A.png");
+	Canal1B.load("C1B.png");
+	Canal2A.load("C2A.png");
+	Canal2B.load("C2B.png");
+	Canal3A.load("C3A.png");
+	Canal3B.load("C3B.png");
+	Canal3C.load("C3C.png");
+	Canal5A.load("C5A.png");
 	BGImages.push_back(Canal1A);
 	BGImages.push_back(Canal1B);
 	BGImages.push_back(Canal2A);
@@ -80,10 +80,10 @@ void Game::LoadObjectImages()
 	ofImage poutine;
 	ofImage coin;
 
-	burger.loadImage("Burger.png");
-	hotdog.loadImage("Hotdog.png");
-	poutine.loadImage("Poutine.png");
-	coin.loadImage("Coin.png");
+	burger.load("Burger.png");
+	hotdog.load("Hotdog.png");
+	poutine.load("Poutine.png");
+	coin.load("Coin.png");
 
 	ObImages.push_back(burger);
 	ObImages.push_back(hotdog);

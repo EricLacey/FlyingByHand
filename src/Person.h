@@ -1,12 +1,12 @@
 #pragma once
-#include "ofApp.h"
+#include "ofMain.h"
 
 class Person
 {
 
 public:
 
-	Person(int w, int h, float x, float y, vector<ofImage> i)
+	Person(int w, int h, float x, float y, std::vector<ofImage> i)
 	{
 		m_width = w;
 		m_height = h;
@@ -23,7 +23,7 @@ public:
 
 		//push m_animation([legs])
 	}
-	void setImages(vector<ofImage> i) { m_animation = i; }
+	void setImages(std::vector<ofImage> i) { m_animation = i; }
 
 	void setWidth(int w) { m_width = w; }
 	void setHeight(int h) { m_height = h; }
@@ -34,7 +34,7 @@ public:
 
 private:
 
-	vector<ofImage> m_animation;
+	std::vector<ofImage> m_animation;
 
 	int m_width;
 	int m_height;
