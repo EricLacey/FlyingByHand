@@ -37,22 +37,23 @@ void Game::InitGame()
 	items.push_back(Item(3));
 	items.push_back(Item(3));
 
+	//spawn coins
+
+
+	//spawn food
+
 }
 
 void Game::Update(float deltaTime)
 {
-	//cout << deltaTime << endl;
+
 	m_b1.changeY(gameSpeed * deltaTime);
-	//cout << m_b1.getY() << endl;
 	m_b2.changeY(gameSpeed * deltaTime);
-	//cout << m_b2.getY() << endl;
 	m_b3.changeY(gameSpeed * deltaTime);
-	//cout << m_b3.getY() << endl;
 
 	if (m_b1.getY() >= 1080)
 	{
 		m_b1.setY(m_b3.getY() - m_b3.getImage().getHeight() + 240);
-	//	cout << "moving 1 to top" << endl;
 		m_b1.setImage(BGImages[rand() % 7]);
 		m_b1.setOrder(3);
 		m_b2.setOrder(1);
@@ -62,7 +63,6 @@ void Game::Update(float deltaTime)
 	else if (m_b2.getY() >= 1080)
 	{
 		m_b2.setY(m_b1.getY() - m_b1.getImage().getHeight() + 240);
-	//	cout << "moving 2 to top" << endl;
 		m_b2.setImage(BGImages[rand() % 7]);
 		m_b1.setOrder(2);
 		m_b2.setOrder(3);
@@ -72,12 +72,17 @@ void Game::Update(float deltaTime)
 	else if (m_b3.getY() >= 1080)
 	{
 		m_b3.setY(m_b2.getY() - m_b2.getImage().getHeight() + 240);
-	//	cout << "moving 3 to top" << endl;
 		m_b3.setImage(BGImages[rand() % 7]);
 		m_b1.setOrder(1);
 		m_b2.setOrder(2);
 		m_b3.setOrder(3);
 	}
+
+	
+
+
+
+
 
 }
 
@@ -139,11 +144,10 @@ void Game::Draw()
 	
 	}
 
-
-	//for (int i = 0; i < items.size(); ++i)
-	//{
-	//	items[i].getImage().draw(0, 0);
-	//}
+	for (int i = 0; i < items.size(); ++i)
+	{
+		items[i].getImage().draw(0, 0);
+	}
 }
 
 void Game::LoadBGImages()
