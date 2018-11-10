@@ -6,6 +6,10 @@ class Background
 
 public:
 
+	Background()
+	{
+
+	}
 
 private:
 
