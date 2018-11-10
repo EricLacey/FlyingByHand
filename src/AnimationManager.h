@@ -6,7 +6,7 @@ class AnimationManager
 
 private:
 
-	vector<ofImage> mTextures;
+	std::vector<ofImage> mTextures;
 
 	int animationState;
 
@@ -31,7 +31,7 @@ public:
 
 	void render(float x, float y, bool f);
 
-	void Init(vector<ofImage> textures);
+	void Init(std::vector<ofImage> textures);
 
 	void Update(float DeltaTime);
 

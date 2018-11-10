@@ -2,9 +2,9 @@
 
 #include "ofMain.h"
 #include "ofxLeapC.h"
-
 #include "ProjectConstants.h"
-
+#include "Game.h"
+#include "DeltaTimer.h"
 
 class ofApp : public ofBaseApp {
 
@@ -16,6 +16,10 @@ public:
 
 	ofxLeapC::Device		m_device;
 	Leap::Frame				m_frame;
+
+	DeltaTimer gameTime;
+
+	Game newGame;
 
 	ofVec3f					m_palmPos;
 	ofVec3f					m_palmRot;

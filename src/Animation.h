@@ -1,5 +1,5 @@
 #pragma once
-#include "ofApp.h"
+#include "ofMain.h"
 
 class Animation
 {
@@ -12,12 +12,12 @@ private:
 
 	float currentTime;
 
-	vector<ofImage> m_images;
+	std::vector<ofImage> m_images;
 
 public:
 	Animation() { currentAnimationState = 0; }
 
-	void Init(int fps, vector<ofImage> images);
+	void Init(int fps, std::vector<ofImage> images);
 
 	void updateAnimation(float deltaTime);
 

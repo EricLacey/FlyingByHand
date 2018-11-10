@@ -1,13 +1,15 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
+void ofApp::setup()
+{
 
 	//start conditions
 	m_charScale = 1.0;
 	m_grabAnim = false;
 	m_pinchAnim = false;
 
+<<<<<<< HEAD
 	//setup of leap motion
 	m_device.connectEventHandler(&ofApp::onLeapFrame, this);
 
@@ -15,6 +17,13 @@ void ofApp::setup(){
 	ofSetFrameRate(ProjectConstants::PROJ_DESIRED_FRAMERATE);
 
 
+=======
+	//ofSetFrameRate(ProjectConstants::PROJ_DESIRED_FRAMERATE);
+
+	newGame.InitGame();
+	gameTime.Update();
+
+>>>>>>> Game/AI-branch
 }
 
 void ofApp::onLeapFrame(Leap::Frame frame)
@@ -25,7 +34,12 @@ void ofApp::onLeapFrame(Leap::Frame frame)
 
 //--------------------------------------------------------------
 void ofApp::update(){
+<<<<<<< HEAD
 	//update leap motion
+=======
+
+	newGame.Update(gameTime.GetDeltaTime());
+>>>>>>> Game/AI-branch
 	m_device.update();
 
 	//creating list of hand objects from frame
@@ -41,6 +55,7 @@ void ofApp::update(){
 		//pulling palmPos from hand and converting to vec3 for use
 		const Leap::Vector palmPos = hand.palmPosition();
 		const ofVec3f ofPalmPos = ofxLeapC::toVec3(hand.palmPosition());
+<<<<<<< HEAD
 
 		//scaling palm position 
 		m_palmPos.x = ofPalmPos.x * 7.0f;
@@ -54,6 +69,9 @@ void ofApp::update(){
 
 
 		//pulling grab and pinch gestures from hand
+=======
+		
+>>>>>>> Game/AI-branch
 		m_grabStrength = hand.grabStrength();
 		m_pinchStrength = hand.pinchStrength();
 
@@ -70,6 +88,7 @@ void ofApp::update(){
 		break;
 	}
 
+<<<<<<< HEAD
 	//set grab animation if grabbing
 	if (m_grabStrength >= 0.8) {
 		m_grabAnim = true;
@@ -83,15 +102,23 @@ void ofApp::update(){
 	else if (!m_grabAnim && m_charScale < 1.0) {
 		m_charScale += 0.01;
 	}
+=======
+	gameTime.Update();
+>>>>>>> Game/AI-branch
 }
 
 //--------------------------------------------------------------
-void ofApp::draw(){
+void ofApp::draw()
+{
+	//ofPushMatrix();
+	newGame.Draw();
+
 	ofPushMatrix();
 		ofTranslate(m_palmPos.x, m_palmPos.z);
 		ofRotateZ(m_palmRot.y);
 		ofScale(m_charScale);
 		ofDrawTriangle(0, -20, 10, 10, -10, 10); // placeholder to show position and direction
 	ofPopMatrix();
-}
 
+	//ofPopMatrix();
+}
