@@ -1,12 +1,14 @@
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
+void ofApp::setup()
+{
 
 	m_device.connectEventHandler(&ofApp::onLeapFrame, this);
 
-
 	ofSetFrameRate(ProjectConstants::PROJ_DESIRED_FRAMERATE);
+
+	newGame.InitGame();
 }
 
 void ofApp::onLeapFrame(Leap::Frame frame)
@@ -17,6 +19,7 @@ void ofApp::onLeapFrame(Leap::Frame frame)
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	newGame.Update(gameTime.GetDeltaTime());
 	m_device.update();
 
 	const Leap::HandList& hands = m_frame.hands();
@@ -26,8 +29,7 @@ void ofApp::update(){
 		const Leap::Hand& hand = hands[i];
 		const Leap::Vector palmPos = hand.palmPosition();
 		const ofVec3f ofPalmPos = ofxLeapC::toVec3(hand.palmPosition());
-
-
+		
 		m_grabStrength = hand.grabStrength();
 		m_pinchStrength = hand.pinchStrength();
 
@@ -47,6 +49,8 @@ void ofApp::update(){
 
 		break;
 	}
+
+	gameTime.Update();
 }
 
 //--------------------------------------------------------------
@@ -56,6 +60,9 @@ void ofApp::draw(){
 	ofRotateZ(m_palmRot.y);
 	ofScale(m_pinchStrength + 0.5f, m_pinchStrength + 0.5f, m_pinchStrength + 0.5f);
 	ofDrawTriangle(0, -20, 10, 10, -10, 10);
+
+	newGame.Draw();
+
 	ofPopMatrix();
 }
 

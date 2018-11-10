@@ -23,6 +23,14 @@ public:
 
 		//push m_animation([legs])
 	}
+	void setImages(vector<ofImage> i) { m_animation = i; }
+
+	void setWidth(int w) { m_width = w; }
+	void setHeight(int h) { m_height = h; }
+	void setX(float x) { m_xPos = x; }
+	void setY(float y) { m_yPos = y; }
+	void changeX(float c) { m_xPos += c; }
+	void changeY(float c) { m_yPos += c; }
 
 private:
 
@@ -34,13 +42,6 @@ private:
 	float m_xPos;
 	float m_yPos;
 
-	void setImages(vector<ofImage> i) { m_animation = i; }
 
-	void setWidth(int w) { m_width = w; }
-	void setHeight(int h) { m_height = h; }
-	void setX(float x) { m_xPos = x; }
-	void setY(float y) { m_yPos = y; }
-	void changeX(float c) { m_xPos += c; }
-	void changeY(float c) { m_yPos += c; }
 
 };
