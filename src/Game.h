@@ -15,7 +15,15 @@ public:
 	}
 
 private:
-	   
+	Background* m_b1 = new Background();
+	Background* m_b2 = new Background();
+	Background* m_b3 = new Background();
+
+	Item* m_burger = new Item();
+	Item* m_poutine = new Item();
+	Item* m_hotdog = new Item();
+	Item* m_coin = new Item();
+
 	//Background m_b1;
 	//Background m_b2;
 	//Background m_b3;
