@@ -21,4 +21,8 @@ public:
 	ofVec3f					m_palmRot;
 	float					m_pinchStrength;
 	float					m_grabStrength;
+
+	bool					m_grabAnim;
+	bool					m_pinchAnim;
+	float					m_charScale;
 };
