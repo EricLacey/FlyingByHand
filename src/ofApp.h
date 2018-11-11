@@ -21,6 +21,8 @@ public:
 
 	Game newGame;
 
+	ofImage bird;
+
 	ofVec3f					m_palmPos;
 	ofVec3f					m_palmRot;
 	float					m_pinchStrength;

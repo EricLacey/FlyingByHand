@@ -4,6 +4,11 @@ void Game::InitGame()
 {
 	srand(time(NULL));
 
+	font.loadFont("coolvetica.ttf", 30, true, false, true, 0.1);
+
+	money = 0;
+	food = 0;
+
 	nightTime = rand() % 2;
 
 	LoadBGImages();
@@ -57,9 +62,8 @@ void Game::InitGame()
 	}
 }
 
-void Game::Update(float deltaTime)
+void Game::Update(float deltaTime, float x, float y, bool g, bool p, int w, int h)
 {
-
 	m_b1.changeY(gameSpeed * deltaTime);
 	m_b2.changeY(gameSpeed * deltaTime);
 	m_b3.changeY(gameSpeed * deltaTime);
@@ -106,10 +110,32 @@ void Game::Update(float deltaTime)
 		}
 	}
 
+	cout << "p: "  << p << endl;
+	cout << "g: "  << g << endl;
+
+
 	//check player collision and event
 	for (int i = 0; i < items.size(); ++i)
 	{
-		//if (checkCollision())
+		if (checkCollision(items[i].getX(), x, items[i].getWidth(), w, items[i].getY(), y, items[i].getHeight(), h))
+		{
+			if ((items[i].getID() == 1) && p == true)
+			{
+				//add money
+				money += 10;
+				//respawn item
+				items[i].setX(rand() % 1100 + 400);
+				items[i].setY((rand() % 1080) - 1080);
+			}
+			else if ((items[i].getID() != 1) && g == true)
+			{
+				//add food stolen
+				food += 1;
+				//respawn item
+				items[i].setX(rand() % 1100 + 400);
+				items[i].setY((rand() % 1080) - 1080);
+			}
+		}
 
 	}
 
@@ -180,6 +206,26 @@ void Game::Draw()
 		items[i].getImage().draw(0, 0);
 		ofPopMatrix();
 	}
+
+	string moneyStr = "Money: " + ofToString(money);
+	string foodStr = "Food: " + ofToString(food);
+
+
+	ofPushMatrix();
+	if (nightTime)
+	{
+		ofSetColor(ofColor::lightGoldenRodYellow);
+	}
+	else
+	{
+		ofSetColor(ofColor::darkGray);
+	}
+	
+	font.drawStringAsShapes(moneyStr, 90, 90);
+	font.drawStringAsShapes(foodStr, 90, 140);
+	ofSetColor(255, 255, 255);
+	ofPopMatrix();
+	   
 }
 
 void Game::LoadBGImages()

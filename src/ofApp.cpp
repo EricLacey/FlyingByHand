@@ -20,9 +20,11 @@ void ofApp::setup()
 
 	//ofSetFrameRate(ProjectConstants::PROJ_DESIRED_FRAMERATE);
 
+	bird.load("Bird.png");
+	bird.resize(bird.getWidth() / 2, bird.getHeight() / 2);
+
 	newGame.InitGame();
 	gameTime.Update();
-
 
 }
 
@@ -34,10 +36,6 @@ void ofApp::onLeapFrame(Leap::Frame frame)
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
-	//update game
-	newGame.Update(gameTime.GetDeltaTime());
-	gameTime.Update();
 
 	//update leap motion
 	m_device.update();
@@ -79,18 +77,39 @@ void ofApp::update(){
 	}
 
 	//set grab animation if grabbing
-	if (m_grabStrength >= 0.8) {
+	if (m_grabStrength >= 0.8) 
+	{
 		m_grabAnim = true;
 	}
-	else {
+	else 
+	{
 		m_grabAnim = false;
 	}
-	if (m_grabAnim && m_charScale >= 0.5) {
-		m_charScale -= 0.01;
+
+	if (m_grabAnim && m_charScale >= 0.7)
+	{
+		//m_charScale -= 0.01;
+		m_charScale /= 1.15;
 	}
-	else if (!m_grabAnim && m_charScale < 1.0) {
-		m_charScale += 0.01;
+	else if (!m_grabAnim && m_charScale < 1.0)
+	{
+		//m_charScale += 0.01;
+		m_charScale *= 1.15;
 	}
+
+	if (m_pinchStrength >= 0.8)
+	{
+		m_pinchAnim = true;
+	}
+	else
+	{
+		m_pinchAnim = false;
+	}
+
+	//update game
+	newGame.Update(gameTime.GetDeltaTime(), m_palmPos.x, m_palmPos.z, m_grabAnim, m_pinchAnim, bird.getWidth(), bird.getHeight());
+	//newGame.Update(gameTime.GetDeltaTime());
+	gameTime.Update();
 
 }
 
@@ -104,7 +123,7 @@ void ofApp::draw()
 		ofTranslate(m_palmPos.x, m_palmPos.z);
 		ofRotateZ(m_palmRot.y);
 		ofScale(m_charScale);
-		ofDrawTriangle(0, -20, 10, 10, -10, 10); // placeholder to show position and direction
+		bird.draw(0, 0);
 	ofPopMatrix();
 
 	//ofPopMatrix();
