@@ -6,13 +6,14 @@ class Item
 
 public:
 
-	Item(int id)
+	Item(int id, ofImage i)
 	{
 		m_width = 0;
 		m_height = 0;
 		m_xPos = 0;
 		m_yPos = 0;
 		m_id = id;
+		m_ItemImage = i;
 	}
 
 	void setImage(ofImage i) { m_ItemImage = i; }
@@ -24,6 +25,10 @@ public:
 	void changeY(float c) { m_yPos += c; }
 	int getID() { return m_id; }
 	ofImage getImage() { return m_ItemImage; }
+	float getY() { return m_yPos; }
+	float getX() { return m_xPos; }
+	int getWidth() { return m_width; }
+	int getHeight() { return m_height; }
 
 private:
 

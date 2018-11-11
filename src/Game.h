@@ -3,7 +3,6 @@
 //#include "Person.h"
 #include "Item.h"
 #include "Background.h"
-//#include "Collision.h"
 #include <time.h>
 
 class Game
@@ -15,6 +14,7 @@ public:
 	void Draw();
 	void LoadBGImages();
 	void LoadObjectImages();
+	bool checkCollision(int mX, int X, int mW, int W, int mY, int Y, int mH, int H);
 
 private:
 

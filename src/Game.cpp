@@ -21,27 +21,37 @@ void Game::InitGame()
 	//coins
 	for (int i = 0; i < 10; ++i)
 	{
-		items.push_back(Item(1));
+		items.push_back(Item(1, ObImages[3]));
 
 	}
 
 	//burgers
-	items.push_back(Item(2));
-	items.push_back(Item(2));
+	items.push_back(Item(2, ObImages[0]));
+	items.push_back(Item(2, ObImages[0]));
 
 	//hotdog
-	items.push_back(Item(4));
-	items.push_back(Item(4));
+	items.push_back(Item(4, ObImages[1]));
+	items.push_back(Item(4, ObImages[1]));
 
 	//pountine
-	items.push_back(Item(3));
-	items.push_back(Item(3));
+	items.push_back(Item(3, ObImages[2]));
+	items.push_back(Item(3, ObImages[2]));
 
 	//spawn coins
+	for (int i = 0; i < 10; ++i)
+	{
+		items[i].setX(rand() % 1100 + 400);
+		items[i].setY((rand() % 2080) - 1380);
 
+	}
 
 	//spawn food
+	for (int i = 10; i < 16; ++i)
+	{
+		items[i].setX(rand() % 1100 + 400);
+		items[i].setY((rand() % 2080) - 1380);
 
+	}
 }
 
 void Game::Update(float deltaTime)
@@ -50,6 +60,11 @@ void Game::Update(float deltaTime)
 	m_b1.changeY(gameSpeed * deltaTime);
 	m_b2.changeY(gameSpeed * deltaTime);
 	m_b3.changeY(gameSpeed * deltaTime);
+
+	for (int i = 0; i < items.size(); ++i)
+	{
+		items[i].changeY(gameSpeed * deltaTime);
+	}
 
 	if (m_b1.getY() >= 1080)
 	{
@@ -79,10 +94,21 @@ void Game::Update(float deltaTime)
 	}
 
 	
+	for (int i = 0; i < items.size(); ++i)
+	{
+		if (items[i].getY() >= 1080)
+		{
+			items[i].setX(rand() % 1100 + 400);
+			items[i].setY((rand() % 1080) - 1080);
+		}
+	}
 
+	//check player collision and event
+	for (int i = 0; i < items.size(); ++i)
+	{
+		//if (checkCollision())
 
-
-
+	}
 
 }
 
@@ -146,7 +172,10 @@ void Game::Draw()
 
 	for (int i = 0; i < items.size(); ++i)
 	{
+		ofPushMatrix();
+		ofTranslate(items[i].getX(), items[i].getY());
 		items[i].getImage().draw(0, 0);
+		ofPopMatrix();
 	}
 }
 
@@ -193,9 +222,23 @@ void Game::LoadObjectImages()
 	poutine.load("Poutine.png");
 	coin.load("Coin.png");
 
+	burger.resize(burger.getWidth() / 6, burger.getHeight() / 6);
+	hotdog.resize(hotdog.getWidth() / 6, hotdog.getHeight() / 6);
+	poutine.resize(poutine.getWidth() / 8, poutine.getHeight() / 8);
+	coin.resize(coin.getWidth() /3, coin.getHeight() / 3);
+
 	ObImages.push_back(burger);
 	ObImages.push_back(hotdog);
 	ObImages.push_back(poutine);
 	ObImages.push_back(coin);
+
+}
+
+bool Game::checkCollision(int mX, int X, int mW, int W, int mY, int Y, int mH, int H)
+{
+	if (fabsf(mX - X) * 2 < (mW + W) && fabsf(mY - Y) * 2 < (mH + H))
+		return true;
+	else
+		return false;
 
 }
