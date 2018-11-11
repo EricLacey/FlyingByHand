@@ -182,8 +182,6 @@
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
-    <ClCompile Include="src\Animation.cpp" />
-    <ClCompile Include="src\AnimationManager.cpp" />
     <ClCompile Include="src\DeltaTimer.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="..\..\..\addons\ofxImGui\src\BaseEngine.cpp" />
@@ -203,15 +201,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h" />
-    <ClInclude Include="src\Animation.h" />
-    <ClInclude Include="src\AnimationManager.h" />
     <ClInclude Include="src\Background.h" />
-    <ClInclude Include="src\Collision.h" />
     <ClInclude Include="src\DataTypes.h" />
     <ClInclude Include="src\DeltaTimer.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Item.h" />
-    <ClInclude Include="src\Person.h" />
     <ClInclude Include="src\ProjectConstants.h" />
     <ClInclude Include="..\..\..\addons\ofxImGui\src\BaseEngine.h" />
     <ClInclude Include="..\..\..\addons\ofxImGui\src\BaseTheme.h" />

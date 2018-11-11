@@ -29,8 +29,7 @@ void Game::InitGame()
 	//coins
 	for (int i = 0; i < 10; ++i)
 	{
-		items.push_back(Item(1, ObImages[3]));
-
+		items.push_back(Item(1, ObImages[4]));
 	}
 
 	//burgers
@@ -43,7 +42,9 @@ void Game::InitGame()
 
 	//pountine
 	items.push_back(Item(3, ObImages[2]));
-	items.push_back(Item(3, ObImages[2]));
+
+	//beavertail
+	items.push_back(Item(5, ObImages[3]));
 
 	//spawn coins
 	for (int i = 0; i < 10; ++i)
@@ -298,21 +299,25 @@ void Game::LoadObjectImages()
 	ofImage burger;
 	ofImage hotdog;
 	ofImage poutine;
+	ofImage beavertail;
 	ofImage coin;
 
 	burger.load("Burger.png");
 	hotdog.load("Hotdog.png");
 	poutine.load("Poutine.png");
+	beavertail.load("Beavertail.png");
 	coin.load("Coin.png");
 
 	burger.resize(burger.getWidth() / 6, burger.getHeight() / 6);
 	hotdog.resize(hotdog.getWidth() / 6, hotdog.getHeight() / 6);
 	poutine.resize(poutine.getWidth() / 8, poutine.getHeight() / 8);
+	beavertail.resize(beavertail.getWidth() / 3, beavertail.getHeight() / 3);
 	coin.resize(coin.getWidth() /3, coin.getHeight() / 3);
 
 	ObImages.push_back(burger);
 	ObImages.push_back(hotdog);
 	ObImages.push_back(poutine);
+	ObImages.push_back(beavertail);
 	ObImages.push_back(coin);
 
 }
