@@ -3,8 +3,11 @@
 void Game::InitGame()
 {
 	srand(time(NULL));
+
+	nightTime = rand() % 2;
+
 	LoadBGImages();
-	LoadObjectImages();
+	LoadObjectImages();	
 
 	gameSpeed = 500.0f;
 	m_b1.setOrder(1);
@@ -15,8 +18,8 @@ void Game::InitGame()
 	m_b3.setX(0.0);
 
 	m_b1.setY(0.0);
-	m_b2.setY(0.0 - m_b2.getImage().getHeight() + 240);
-	m_b3.setY(0.0 - m_b2.getImage().getHeight() - m_b3.getImage().getHeight() + 480);
+	m_b2.setY(0.0 - m_b2.getImage().getHeight() + 245);
+	m_b3.setY(0.0 - m_b2.getImage().getHeight() - m_b3.getImage().getHeight() + 490);
 
 	//coins
 	for (int i = 0; i < 10; ++i)
@@ -68,7 +71,7 @@ void Game::Update(float deltaTime)
 
 	if (m_b1.getY() >= 1080)
 	{
-		m_b1.setY(m_b3.getY() - m_b3.getImage().getHeight() + 240);
+		m_b1.setY(m_b3.getY() - m_b3.getImage().getHeight() + 245);
 		m_b1.setImage(BGImages[rand() % 7]);
 		m_b1.setOrder(3);
 		m_b2.setOrder(1);
@@ -77,7 +80,7 @@ void Game::Update(float deltaTime)
 	}
 	else if (m_b2.getY() >= 1080)
 	{
-		m_b2.setY(m_b1.getY() - m_b1.getImage().getHeight() + 240);
+		m_b2.setY(m_b1.getY() - m_b1.getImage().getHeight() + 245);
 		m_b2.setImage(BGImages[rand() % 7]);
 		m_b1.setOrder(2);
 		m_b2.setOrder(3);
@@ -86,14 +89,14 @@ void Game::Update(float deltaTime)
 	}
 	else if (m_b3.getY() >= 1080)
 	{
-		m_b3.setY(m_b2.getY() - m_b2.getImage().getHeight() + 240);
+		m_b3.setY(m_b2.getY() - m_b2.getImage().getHeight() + 245);
 		m_b3.setImage(BGImages[rand() % 7]);
 		m_b1.setOrder(1);
 		m_b2.setOrder(2);
 		m_b3.setOrder(3);
 	}
 
-	
+
 	for (int i = 0; i < items.size(); ++i)
 	{
 		if (items[i].getY() >= 1080)
@@ -181,33 +184,67 @@ void Game::Draw()
 
 void Game::LoadBGImages()
 {
-	ofImage Canal1A;
-	ofImage Canal1B;
-	ofImage Canal2A;
-	ofImage Canal2B;
-	ofImage Canal3A;
-	ofImage Canal3B;
-	ofImage Canal3C;
-	ofImage Canal5A;
-	Canal1A.load("C1A.png");
-	Canal1B.load("C1B.png");
-	Canal2A.load("C2A.png");
-	Canal2B.load("C2B.png");
-	Canal3A.load("C3A.png");
-	Canal3B.load("C3B.png");
-	Canal3C.load("C3C.png");
-	Canal5A.load("C5A.png");
-	BGImages.push_back(Canal1A);
-	BGImages.push_back(Canal1B);
-	BGImages.push_back(Canal2A);
-	BGImages.push_back(Canal2B);
-	BGImages.push_back(Canal3A);
-	BGImages.push_back(Canal3B);
-	BGImages.push_back(Canal3C);
-	BGImages.push_back(Canal5A);
-	m_b1.setImage(BGImages[0]);
-	m_b2.setImage(BGImages[1]);
-	m_b3.setImage(BGImages[4]);
+	if (!nightTime)
+	{
+		ofImage Canal1A;
+		ofImage Canal1B;
+		ofImage Canal2A;
+		ofImage Canal2B;
+		ofImage Canal3A;
+		ofImage Canal3B;
+		ofImage Canal3C;
+		ofImage Canal5A;
+		Canal1A.load("C1A.png");
+		Canal1B.load("C1B.png");
+		Canal2A.load("C2A.png");
+		Canal2B.load("C2B.png");
+		Canal3A.load("C3A.png");
+		Canal3B.load("C3B.png");
+		Canal3C.load("C3C.png");
+		Canal5A.load("C5A.png");
+		BGImages.push_back(Canal1A);
+		BGImages.push_back(Canal1B);
+		BGImages.push_back(Canal2A);
+		BGImages.push_back(Canal2B);
+		BGImages.push_back(Canal3A);
+		BGImages.push_back(Canal3B);
+		BGImages.push_back(Canal3C);
+		BGImages.push_back(Canal5A);
+		m_b1.setImage(BGImages[0]);
+		m_b2.setImage(BGImages[1]);
+		m_b3.setImage(BGImages[4]);
+	}
+	else
+	{
+		ofImage Canal1A;
+		ofImage Canal1B;
+		ofImage Canal2A;
+		ofImage Canal2B;
+		ofImage Canal3A;
+		ofImage Canal3B;
+		ofImage Canal3C;
+		ofImage Canal5A;
+		Canal1A.load("C1AN.png");
+		Canal1B.load("C1BN.png");
+		Canal2A.load("C2AN.png");
+		Canal2B.load("C2BN.png");
+		Canal3A.load("C3AN.png");
+		Canal3B.load("C3BN.png");
+		Canal3C.load("C3CN.png");
+		Canal5A.load("C5AN.png");
+		BGImages.push_back(Canal1A);
+		BGImages.push_back(Canal1B);
+		BGImages.push_back(Canal2A);
+		BGImages.push_back(Canal2B);
+		BGImages.push_back(Canal3A);
+		BGImages.push_back(Canal3B);
+		BGImages.push_back(Canal3C);
+		BGImages.push_back(Canal5A);
+		m_b1.setImage(BGImages[0]);
+		m_b2.setImage(BGImages[1]);
+		m_b3.setImage(BGImages[4]);
+	}
+	
 }
 
 void Game::LoadObjectImages()
